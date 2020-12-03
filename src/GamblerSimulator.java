@@ -14,7 +14,9 @@ public class GamblerSimulator {
 		int Stake=100;
 		GamblerSimulator gambler=new GamblerSimulator();
 		game();
-		gambler.calculate_goal();
+		//gambler.calculate_goal();
+		gambler.DaysPlaying();
+		
 	}
 	
 		public static int game() {
@@ -29,7 +31,7 @@ public class GamblerSimulator {
 			return result-1;
 		}
 	}
-		public void calculate_goal() {
+		public String calculate_goal() {
 			int totalStake=100;
 			while(true) {
 				int result=game();
@@ -38,6 +40,26 @@ public class GamblerSimulator {
 					break;
 		}
 			System.out.print(totalStake);
+			return null;
+		}
+
+		public void DaysPlaying() {
+			int days = 0;
+			int win = 0;
+			int loose = 0;
+			String result;
+			while (days < 20) {
+				result = calculate_goal();
+				if (result == "win")
+					win++;
+				else
+					loose++;
+				days++;
+			}
+			System.out.println("total win=" + win);
+			System.out.println("total loose=" + loose);
+
+			
 		}
 }
 
